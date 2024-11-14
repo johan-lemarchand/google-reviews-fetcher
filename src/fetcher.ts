@@ -34,6 +34,7 @@ export async function fetchGoogleReviews(config: GoogleReviewsConfig): Promise<P
         lastUpdate: new Date().toISOString().split('T')[0]
         };
     } catch (error) {
-        throw new Error(`Failed to fetch Google reviews: ${error.message}`);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        throw new Error(`Failed to fetch Google reviews: ${errorMessage}`);
     }
 }

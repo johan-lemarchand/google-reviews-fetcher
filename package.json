@@ -1,6 +1,9 @@
 {
     "name": "@johan-lemarchand/google-reviews-fetcher",
     "version": "1.0.0",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
@@ -9,7 +12,8 @@
     "jsx": "react",
     "scripts": {
         "build": "tsc && cp -r src/components/styles dist/",
-        "test": "jest"
+        "test": "jest",
+        "prepare": "npm run build"
     },
     "dependencies": {
         "node-fetch": "^3.3.2",
