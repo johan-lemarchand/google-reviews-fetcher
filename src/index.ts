@@ -1,5 +1,3 @@
-// Exports existants
-export { fetchGoogleReviews } from './fetchGoogleReviews';
 export type {
     GoogleReviewsConfig,
     PlaceDetails,
