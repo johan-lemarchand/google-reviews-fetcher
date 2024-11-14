@@ -70,3 +70,4 @@ export async function fetchGoogleReviews(config: GoogleReviewsConfig): Promise<P
         throw new Error(`Failed to fetch Google reviews: ${errorMessage}`);
         }
     }
+    export type { GoogleReviewsConfig, PlaceDetails };
