@@ -11,6 +11,7 @@ export type {
 export { ReviewsSwiper } from './components/ReviewsSwiper';
 export { ReviewsMasonry } from './components/ReviewsMasonry';
 export { ReviewsCustom } from './components/ReviewsCustom';
+export { GoogleReviewsButton } from './components/GoogleReviewsButton';
 
 // Export du hook
 export { useReviews } from './hooks/useReviews';

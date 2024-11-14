@@ -1,44 +1,53 @@
+'use client';
+
 import React from 'react';
 import Masonry from 'react-masonry-css';
-import { PlaceDetails } from '../types';
+import { useReviews } from '../hooks/useReviews';
 
-interface ReviewsMasonryProps {
-    reviews: PlaceDetails;
-}
+export const ReviewsMasonry: React.FC<{ jsonPath?: string }> = ({
+                                                                    jsonPath = '/data/reviews.json'
+                                                                }) => {
+    const { reviews, error } = useReviews(jsonPath);
 
-export const ReviewsMasonry: React.FC<ReviewsMasonryProps> = ({ reviews }) => {
+    // Si pas de reviews ou reviews vides, on ne rend rien
+    if (!reviews || reviews.reviews.length === 0) return null;
+
     const breakpointColumns = {
-    default: 3,
-    1100: 2,
-    700: 1
-};
+        default: 3,
+        1100: 2,
+        700: 1
+    };
 
-return (
-    <Masonry
-        breakpointCols={breakpointColumns}
-        className="reviews-masonry"
-        columnClassName="reviews-masonry_column"
+    return (
+        <Masonry
+            breakpointCols={breakpointColumns}
+            className="reviews-masonry"
+            columnClassName="reviews-masonry_column"
         >
-        {reviews.reviews.map((review, index) => (
-            <div key={index} className="review-card">
-            <div className="review-header">
-                <img src={review.image} alt={review.author_name} className="review-avatar" />
-                <div>
-                <h4>{review.author_name}</h4>
-                <div className="stars">
-                    {[...Array(5)].map((_, i) => (
-                    <i 
-                        key={i} 
-                        className={`star ${i < review.rating ? 'active' : ''}`}
-                    />
-                    ))}
+            {reviews.reviews.map((review, index) => (
+                <div key={index} className="review-card">
+                    <div className="review-header">
+                        <img
+                            src={review.image}
+                            alt={review.author_name}
+                            className="review-avatar"
+                        />
+                        <div>
+                            <h4>{review.author_name}</h4>
+                            <div className="stars">
+                                {[...Array(5)].map((_, i) => (
+                                    <i
+                                        key={i}
+                                        className={`star ${i < review.rating ? 'active' : ''}`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    <p className="review-text">{review.text}</p>
+                    <span className="review-date">{review.date}</span>
                 </div>
-                </div>
-            </div>
-            <p className="review-text">{review.text}</p>
-            <span className="review-date">{review.date}</span>
-            </div>
-        ))}
+            ))}
         </Masonry>
     );
 };

@@ -6,11 +6,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { useReviews } from '../hooks/useReviews';
 
-export const ReviewsSwiper: React.FC = () => {
-    const reviews = useReviews();
+export const ReviewsSwiper: React.FC<{ jsonPath?: string }> = ({
+                                                                   jsonPath = '/data/reviews.json'
+                                                               }) => {
+    const { reviews, error } = useReviews(jsonPath);
 
-    // Afficher un état de chargement ou rien si les données ne sont pas encore chargées
-    if (!reviews) return null;
+    if (!reviews || reviews.reviews.length === 0) return null;
 
     return (
         <Swiper
