@@ -1,8 +1,8 @@
 {
-    "name": "@johan-lemarchand/google-reviews-fetcher",
+    "name": "@johan27000/google-reviews-fetcher",
     "version": "1.0.0",
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com"
+        "access": "public"
     },
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -32,5 +32,17 @@
     "peerDependencies": {
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/johan-lemarchand/google-reviews-fetcher.git"
+    },
+    "author": "johan27000",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/johan-lemarchand/google-reviews-fetcher/issues"
+    },
+    "homepage": "https://github.com/johan-lemarchand/google-reviews-fetcher#readme",
+    "keywords": [],
+    "description": ""
 }
