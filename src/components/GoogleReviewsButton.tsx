@@ -2,19 +2,15 @@
 
 import React from 'react';
 import { useReviews } from '../hooks/useReviews';
+import { FaStar, FaGoogle } from 'react-icons/fa';
 
 interface GoogleReviewsButtonProps {
     placeId: string;
-    jsonPath?: string;
 }
 
-export const GoogleReviewsButton: React.FC<GoogleReviewsButtonProps> = ({
-                                                                            placeId,
-                                                                            jsonPath = '/data/reviews.json'
-                                                                        }) => {
-    const { reviews } = useReviews(jsonPath);
+export const GoogleReviewsButton: React.FC<GoogleReviewsButtonProps> = ({ placeId }) => {
+    const { reviews } = useReviews();
 
-    // Si pas de reviews, on peut afficher un bouton simplifié
     if (!reviews) {
         return (
             <a
@@ -24,10 +20,8 @@ export const GoogleReviewsButton: React.FC<GoogleReviewsButtonProps> = ({
                 className="google-reviews-button"
             >
                 <div className="button-content">
-                    <i className="google-icon" />
-                    <div className="button-text">
-                        <span>Voir nos avis Google</span>
-                    </div>
+                    <FaGoogle className="google-icon" />
+                    <span className="button-text">Voir nos avis Google</span>
                 </div>
             </a>
         );
@@ -41,19 +35,19 @@ export const GoogleReviewsButton: React.FC<GoogleReviewsButtonProps> = ({
             className="google-reviews-button"
         >
             <div className="button-content">
-                <i className="google-icon" />
+                <FaGoogle className="google-icon" />
                 <div className="button-text">
                     <span>Voir tous nos avis Google</span>
                     <div className="rating-info">
                         <div className="stars">
                             {[...Array(5)].map((_, i) => (
-                                <i
+                                <FaStar
                                     key={i}
                                     className={`star ${i < Math.round(reviews.rating) ? 'active' : ''}`}
                                 />
                             ))}
                         </div>
-                        <span>({reviews.totalReviews} avis)</span>
+                        <span className="reviews-count">({reviews.totalReviews} avis)</span>
                     </div>
                 </div>
             </div>

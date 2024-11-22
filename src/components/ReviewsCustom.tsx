@@ -5,17 +5,15 @@ import { useReviews } from '../hooks/useReviews';
 import { FormattedReview } from '../types';
 
 interface ReviewsCustomProps {
-    jsonPath?: string;
     renderReview?: (review: FormattedReview) => React.ReactNode;
     containerClassName?: string;
 }
 
 export const ReviewsCustom: React.FC<ReviewsCustomProps> = ({
-                                                                jsonPath = '/data/reviews.json',
                                                                 renderReview,
                                                                 containerClassName = 'reviews-container'
                                                             }) => {
-    const { reviews, error } = useReviews(jsonPath);
+    const { reviews, error } = useReviews();
 
     // Si pas de reviews ou reviews vides, on ne rend rien
     if (!reviews || reviews.reviews.length === 0) return null;

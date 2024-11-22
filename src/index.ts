@@ -1,15 +1,15 @@
-export type {
-    GoogleReviewsConfig,
-    PlaceDetails,
-    FormattedReview,
-    GoogleReview
-} from './types';
+'use client';
+import './styles/index.css';
 
-// Export des composants
 export { ReviewsSwiper } from './components/ReviewsSwiper';
 export { ReviewsMasonry } from './components/ReviewsMasonry';
 export { ReviewsCustom } from './components/ReviewsCustom';
 export { GoogleReviewsButton } from './components/GoogleReviewsButton';
-
-// Export du hook
 export { useReviews } from './hooks/useReviews';
+
+export type {
+    PlaceDetails,
+    FormattedReview,
+    GoogleReview,
+    GoogleReviewsConfig
+} from './types';

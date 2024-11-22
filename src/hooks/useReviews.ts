@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { PlaceDetails } from '../types';
 
@@ -6,38 +8,25 @@ interface ReviewsHookResult {
     error: boolean;
 }
 
-export const useReviews = (jsonPath = '/data/reviews.json'): ReviewsHookResult => {
+export const useReviews = (): ReviewsHookResult => {
     const [reviews, setReviews] = useState<PlaceDetails | null>(null);
     const [error, setError] = useState<boolean>(false);
 
     useEffect(() => {
         const loadReviews = async () => {
             try {
-                const response = await fetch(jsonPath);
-                if (!response.ok) {
-                    setReviews({
-                        totalReviews: 0,
-                        rating: 0,
-                        reviews: [],
-                        lastUpdate: new Date().toISOString()
-                    });
-                    return;
-                }
+                const response = await fetch('/api/reviews');
+                if (!response.ok) throw new Error('Failed to fetch');
                 const data = await response.json();
                 setReviews(data);
             } catch (error) {
-                setReviews({
-                    totalReviews: 0,
-                    rating: 0,
-                    reviews: [],
-                    lastUpdate: new Date().toISOString()
-                });
                 setError(true);
+                console.error('Error loading reviews:', error);
             }
         };
 
         loadReviews();
-    }, [jsonPath]);
+    }, []);
 
     return { reviews, error };
 };

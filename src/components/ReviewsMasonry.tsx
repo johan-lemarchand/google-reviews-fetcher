@@ -4,10 +4,8 @@ import React from 'react';
 import Masonry from 'react-masonry-css';
 import { useReviews } from '../hooks/useReviews';
 
-export const ReviewsMasonry: React.FC<{ jsonPath?: string }> = ({
-                                                                    jsonPath = '/data/reviews.json'
-                                                                }) => {
-    const { reviews, error } = useReviews(jsonPath);
+export const ReviewsMasonry: React.FC = () => {
+    const { reviews, error } = useReviews();
 
     // Si pas de reviews ou reviews vides, on ne rend rien
     if (!reviews || reviews.reviews.length === 0) return null;

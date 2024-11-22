@@ -1,20 +1,23 @@
 {
-    "compilerOptions": {
-        "target": "es2018",
-        "module": "commonjs",
-        "lib": ["es2018", "dom"],
-        "declaration": true,
-        "declarationMap": true,
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "strict": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "jsx": "react",
-        "moduleResolution": "node"
-        },
-        "include": ["src"],
-        "exclude": ["node_modules", "dist", "tests"]
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "lib": ["es2018", "dom"],
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "allowJs": true,
+    "incremental": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "tests"]
 }
